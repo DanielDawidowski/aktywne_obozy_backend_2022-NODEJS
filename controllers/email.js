@@ -40,7 +40,7 @@ exports.contactClientForm = (req, res) => {
 };
 
 exports.contactAdminForm = (req, res) => {
-  const { phone, email, name, eventName } = req.body;
+  const { phone, email, name, eventName, age } = req.body;
   // console.log(req.body);
 
   // let mailList = [authorEmail, process.env.EMAIL_TO]
@@ -55,6 +55,7 @@ exports.contactAdminForm = (req, res) => {
             <p>Imię: ${name} </p>
             <p>Email: ${email} </p>
             <p>Tel: ${phone} </p>
+            <p>Wiek: ${age}</p>
             <p>Nazwa Wyjazdu: ${eventName}</p>
         `,
   };
