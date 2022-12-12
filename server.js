@@ -3,8 +3,8 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-// // import routes
-// const { readdirSync } = require("fs");
+// import routes
+const { readdirSync } = require("fs");
 
 require("dotenv").config();
 
@@ -16,8 +16,8 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 
-// // routes middleware
-// readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
+// routes middleware
+readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
 // port
 const port = process.env.PORT || 8000;
