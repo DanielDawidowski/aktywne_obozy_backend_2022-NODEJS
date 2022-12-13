@@ -31,8 +31,36 @@ exports.contactClientForm = (req, res) => {
     subject: "Dziekujemy za zgłoszenie",
     text: `Email recieved from contact from \n Sender name: ${name} \n Sender email: ${email} \n Sender email: ${phone}`,
     html: `
-            <h1>Dziekujemy za zgłoszenie ${name} </h1>
+            <h1>Dziekujemy za zgłoszenie</h1>
             <h3>Wkrótce wyślemy wiadomość potwierdzającą wyjazd na ${eventName}</h3>
+            <br>
+            <br>
+            <br>
+            <h2>CHCIELIŚMY ZAKOMUNIKOWAĆ, IŻ W PIERWSZEJ KOLEJNOŚCI ROZPATRYWANE BĘDĄ ZGŁOSZENIA OSÓB W RAMACH DOFINANSOWANIA Z KRUS.<h2>
+            <br>
+            <h3>Karta wypoczynku – <bold>wypełniamy tylko punkt nr II. Informacje dotyczące uczestnika wypoczynku</bold>, na karcie muszą być podpisy obojga rodziców.</h3>
+            <br>
+            <h3>Skan wypełnionej karty wypoczynku należy jak najszybciej przesłać na maila zwrotnego.</h3>
+            <br>
+            <h2>WARUNKI UCZESTNICTWA W WYPOCZYNKU</h2> 
+            <br>
+            <h3>podpisać przez rodziców i uczestnika wypoczynku(dziecko)</h3>
+            <br>
+            <br>
+            <h1>CENA: od 800 zł za 8 dni wraz z atrakcjami lub 300 zł + BON TURYSTYCZNY (KRUS)</h1>
+            <p>Z wypoczynku zimowego w ramach dofinansowania z KRUS mogą skorzystać dzieci i młodzież urodzone po 1 stycznia 2007 r., których co najmniej jedno z rodziców /prawnych opiekunów/ jest ubezpieczone w pełnym zakresie (jednocześnie na ubezpieczenie emerytalną – rentowe oraz wypadkowe, chorobowe i macierzyńskie) lub pobiera rentę bądź emeryturę z Kasy Rolniczego Ubezpieczenia Społecznego.</p>
+            <br>
+            <h2>Cena bez dofinansowania wynosi 1100 zł  + BON TURYSTYCZNY lub 1600 zł.</h2>
+            <h2>Warunkiem uczestnictwa i zapisania jest uregulowanie składaki członkowskiej – (300 zł) na konto:</h2>
+            <br>
+            <h3>KONTO UKS JUNIOR</h3>
+            <h3>66 2030 0045 1110 0000 0146 0610</h3>
+            <h3>Z dopiskiem „składka członkowska imię i nazwisko dziecka”</h3>
+            <br>
+            <h1>Całość kwoty za kolonie jest pomniejszana o składkę członkowską</h1>
+            <br>
+            <h3>Pozostałą kwotę do zapłaty proszę uregulować do dnia wyjazdu na to samo konto z dopiskiem:</h3>
+            <h3>„${eventName} 2023, imię i nazwisko dziecka”</h3>
         `,
   };
 
@@ -40,7 +68,7 @@ exports.contactClientForm = (req, res) => {
 };
 
 exports.contactAdminForm = (req, res) => {
-  const { phone, email, name, eventName, age } = req.body;
+  const { name, email, phone, eventName, age } = req.body;
   // console.log(req.body);
 
   // let mailList = [authorEmail, process.env.EMAIL_TO]
@@ -57,6 +85,30 @@ exports.contactAdminForm = (req, res) => {
             <p>Tel: ${phone} </p>
             <p>Wiek: ${age}</p>
             <p>Nazwa Wyjazdu: ${eventName}</p>
+        `,
+  };
+
+  sendEmailWithNodemailer(req, res, emailData);
+};
+
+exports.contactClientSpecForm = (req, res) => {
+  const { phone, email, name } = req.body;
+  // console.log(req.body);
+
+  // let mailList = [authorEmail, process.env.EMAIL_TO]
+
+  const emailData = {
+    to: email,
+    from: process.env.EMAIL_TO,
+    subject: "Dziekujemy za zgłoszenie",
+    text: `Email recieved from contact from \n Sender name: ${name} \n Sender email: ${email} \n Sender email: ${phone}`,
+    html: `
+            <h1>Dziekujemy za zgłoszenie</h1>
+            <h3>Wkrótce wyślemy wiadomość potwierdzającą</h3>
+            <br>
+            <br>
+            <br>
+           
         `,
   };
 
