@@ -2,7 +2,7 @@ module.exports = {
   type: "service_account",
   project_id: "aktywne-obozy-new",
   private_key_id: process.env.FB_KEY_ID,
-  private_key: process.env.FB_KEY,
+  private_key: process.env.FB_KEY.replace(/\\n/g, "\n"),
   client_email:
     "firebase-adminsdk-znf7r@aktywne-obozy-new.iam.gserviceaccount.com",
   client_id: "115772173880659639633",
