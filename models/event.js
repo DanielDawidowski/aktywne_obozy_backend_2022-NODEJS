@@ -26,6 +26,12 @@ const eventSchema = new mongoose.Schema(
       required: true,
       maxlength: 32,
     },
+    priceNoDiscount: {
+      type: Number,
+      trim: true,
+      required: true,
+      maxlength: 32,
+    },
     amount: {
       type: Number,
       trim: true,
