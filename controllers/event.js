@@ -20,7 +20,7 @@ exports.listAll = async (req, res) => {
   let events = await Event.find({})
     .limit(parseInt(req.params.count))
     .populate("typeEvent")
-    .sort([["createdAt", "desc"]])
+    // .sort([["createdAt", "desc"]])
     .exec();
   res.json(events);
 };
