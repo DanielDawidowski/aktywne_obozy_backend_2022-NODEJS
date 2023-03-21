@@ -10,6 +10,7 @@ exports.contactForm = (req, res) => {
     subject: `Nowe pytanie z serwisu Aktywne Obozy`,
     text: `Sender email: ${email} \n Sender message: ${message}`,
     html: `
+        <h4><bold>Email:</bold>  ${email}</h4>
         <h4><bold>Pytanie od:</bold>  ${name}</h4>
         <p><bold>Wiadomość:</bold> ${message}</p>
         <hr />
